@@ -1,0 +1,316 @@
+export default function NutriGymSite() {
+  const plans = [
+    {
+      title: "Muscle-Up",
+      price: "9,90€",
+      badge: "Plat signature",
+      desc: "Poulet mariné, quinoa, brocolis et sauce cajou. Le repas iconique de Nutri-Gym, pensé pour allier plaisir, satiété et performance.",
+      macros: "45g protéines • 50g glucides • 12g lipides • 490 kcal",
+      target: "Équilibré / best-seller",
+      tags: ["Halal possible", "Riche en protéines", "Prêt à emporter"],
+    },
+    {
+      title: "Bulk-Up",
+      price: "10,90€",
+      badge: "Prise de masse",
+      desc: "Une recette plus généreuse pour accompagner les entraînements intensifs et soutenir la récupération musculaire.",
+      macros: "50g protéines • 80g glucides • 20g lipides • 720 kcal",
+      target: "Énergie / musculation",
+      tags: ["Halal possible", "Calories élevées", "Idéal post-training"],
+    },
+    {
+      title: "Lean Fit",
+      price: "9,90€",
+      badge: "Sèche",
+      desc: "Un menu léger, riche en protéines et maîtrisé en calories, destiné aux personnes qui veulent affiner leur alimentation sans sacrifier le goût.",
+      macros: "40g protéines • 25g glucides • 8g lipides • 380 kcal",
+      target: "Définition / perte de gras",
+      tags: ["Faible en calories", "Riche en protéines", "Simple et sain"],
+    },
+    {
+      title: "Green Power",
+      price: "9,90€",
+      badge: "Vegan",
+      desc: "Une alternative végétale complète à base de protéines végétales, de céréales et de légumes, parfaite pour manger sainement et efficacement.",
+      macros: "30g protéines • 55g glucides • 15g lipides • 500 kcal",
+      target: "Vegan / healthy",
+      tags: ["100% vegan", "Riche en fibres", "Équilibré"],
+    },
+    {
+      title: "Veggie Boost",
+      price: "9,90€",
+      badge: "Végétarien",
+      desc: "Une option savoureuse et nourrissante pour les personnes qui souhaitent un repas végétarien complet, pratique et rassasiant.",
+      macros: "35g protéines • 50g glucides • 18g lipides • 550 kcal",
+      target: "Alternative végétarienne",
+      tags: ["Végétarien", "Repas complet", "Format pratique"],
+    },
+  ];
+
+  const steps = [
+    "Les plats sont préparés dans des dark kitchens pour garantir une production efficace, standardisée et fraîche.",
+    "Ils sont livrés chaque jour dans des salles de sport partenaires, puis placés dans des distributeurs réfrigérés en libre accès.",
+    "Le client choisit son menu, consulte les calories et macronutriments, paie sur place ou commande à l'avance en ligne.",
+  ];
+
+  const benefits = [
+    "Affichage clair des protéines, glucides, lipides et calories sur chaque packaging",
+    "Peu de plats, mais une gamme couvrant les besoins essentiels : vegan, végétarien, sèche, prise de masse et repas signature",
+    "Prix accessible autour de 10€ pour démocratiser l'alimentation saine en salle de sport",
+    "Concept pensé pour les personnes qui suivent leurs calories comme pour celles qui veulent simplement mieux manger",
+  ];
+
+  const commitments = [
+    "Possibilité de proposer des viandes halal sur les recettes concernées",
+    "Recettes sans porc ni alcool afin de toucher le public le plus large possible",
+    "Gamme courte pour assurer qualité, lisibilité et rentabilité opérationnelle",
+    "Précommande en ligne avec heure programmée pour récupérer le plat au bon moment",
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-slate-900">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-700 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <div className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 text-sm backdrop-blur">
+                Nutri-Gym • Menus sains en salle de sport
+              </div>
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                Manger sainement après le sport devient enfin simple, rapide et abordable.
+              </h1>
+              <p className="mt-6 max-w-xl text-lg text-slate-200">
+                Nutri-Gym propose des repas équilibrés prêts à emporter, disponibles directement dans des distributeurs réfrigérés installés en salle de sport.
+                Chaque packaging affiche clairement les protéines, glucides, lipides et calories pour permettre à chacun de suivre ses objectifs nutritionnels.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#offres"
+                  className="rounded-2xl bg-white px-6 py-3 font-semibold text-slate-900 shadow-lg transition hover:scale-[1.02]"
+                >
+                  Découvrir les menus
+                </a>
+                <a
+                  href="#concept"
+                  className="rounded-2xl border border-white/30 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+                >
+                  Comprendre le concept
+                </a>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-3xl bg-white/10 p-6 shadow-2xl backdrop-blur">
+                <div className="text-sm text-emerald-200">Positionnement</div>
+                <div className="mt-2 text-2xl font-bold">Healthy et accessible</div>
+                <p className="mt-3 text-sm text-slate-200">
+                  Des menus autour de 10€ pour rendre l'alimentation saine plus simple en sortie d'entraînement.
+                </p>
+              </div>
+              <div className="rounded-3xl bg-white/10 p-6 shadow-2xl backdrop-blur sm:mt-10">
+                <div className="text-sm text-emerald-200">Différenciation</div>
+                <div className="mt-2 text-2xl font-bold">Calories visibles</div>
+                <p className="mt-3 text-sm text-slate-200">
+                  Tous les macronutriments sont affichés directement sur le packaging pour aider à mieux choisir.
+                </p>
+              </div>
+              <div className="rounded-3xl bg-white/10 p-6 shadow-2xl backdrop-blur">
+                <div className="text-sm text-emerald-200">Distribution</div>
+                <div className="mt-2 text-2xl font-bold">Frigos connectés</div>
+                <p className="mt-3 text-sm text-slate-200">
+                  Les plats sont mis à disposition dans des distributeurs réfrigérés installés dans les clubs partenaires.
+                </p>
+              </div>
+              <div className="rounded-3xl bg-white/10 p-6 shadow-2xl backdrop-blur sm:mt-10">
+                <div className="text-sm text-emerald-200">Flexibilité</div>
+                <div className="mt-2 text-2xl font-bold">Achat ou précommande</div>
+                <p className="mt-3 text-sm text-slate-200">
+                  Le client peut acheter son plat sur place ou le commander en ligne à l'avance avec une heure programmée.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="concept" className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="grid gap-8 rounded-[2rem] bg-slate-50 p-8 lg:grid-cols-3">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wider text-emerald-700">Le concept</p>
+            <h2 className="mt-3 text-3xl font-bold">Une solution pensée pour la vraie vie des sportifs</h2>
+          </div>
+          <div className="lg:col-span-2">
+            <p className="text-lg leading-8 text-slate-700">
+              Nutri-Gym repose sur une idée simple : proposer peu de plats, mais les bons. La gamme est volontairement courte pour rester lisible,
+              rentable et facile à produire. Chaque menu répond à un besoin précis : repas équilibré, sèche, prise de masse, alternative vegan ou végétarienne.
+              L'objectif est d'offrir une alimentation saine, claire et pratique à toutes les personnes qui fréquentent les salles de sport, qu'elles trackent leurs calories ou non.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="offres" className="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-16">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wider text-emerald-700">Nos menus</p>
+          <h2 className="mt-3 text-3xl font-bold">Une gamme courte, claire et efficace</h2>
+          <p className="mt-4 text-slate-600">
+            Chaque menu affiche ses macronutriments et ses calories afin de permettre un choix rapide, transparent et cohérent avec les objectifs de chacun.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {plans.map((plan) => (
+            <div key={plan.title} className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-2xl font-bold">{plan.title}</h3>
+                  <div className="mt-2 inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">
+                    {plan.badge}
+                  </div>
+                </div>
+                <span className="rounded-full bg-slate-100 px-4 py-1 text-sm font-semibold text-slate-900">{plan.price}</span>
+              </div>
+              <p className="mt-4 text-slate-600">{plan.desc}</p>
+              <div className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm font-medium text-slate-800">
+                {plan.macros}
+              </div>
+              <div className="mt-4 text-sm font-semibold text-emerald-700">{plan.target}</div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {plan.tags.map((tag) => (
+                  <span key={tag} className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <button className="mt-8 w-full rounded-2xl bg-slate-900 px-5 py-3 font-semibold text-white transition hover:bg-emerald-700">
+                Commander ce plat
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-slate-950 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-emerald-400">Fonctionnement</p>
+              <h2 className="mt-3 text-3xl font-bold">Du laboratoire de cuisine à la salle de sport</h2>
+              <div className="mt-8 space-y-4">
+                {steps.map((step, index) => (
+                  <div key={step} className="flex gap-4 rounded-3xl border border-white/10 bg-white/5 p-5">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 font-bold text-slate-950">
+                      {index + 1}
+                    </div>
+                    <p className="text-slate-200">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-emerald-400">Pourquoi Nutri-Gym</p>
+              <h2 className="mt-3 text-3xl font-bold">Une réponse simple à un vrai besoin</h2>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {benefits.map((benefit) => (
+                  <div key={benefit} className="rounded-3xl border border-white/10 bg-white/5 p-5 text-slate-200">
+                    {benefit}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-[2rem] bg-emerald-50 p-8">
+            <p className="text-sm font-semibold uppercase tracking-wider text-emerald-700">Inclusivité alimentaire</p>
+            <h2 className="mt-3 text-3xl font-bold">Une offre pensée pour toucher un large public</h2>
+            <p className="mt-4 text-slate-700 leading-8">
+              Nutri-Gym veut rester simple sans exclure. La gamme intègre des alternatives vegan et végétariennes, ainsi qu'une possibilité de viande halal sur les recettes concernées.
+              Le concept est conçu pour s'adresser au plus grand nombre, en privilégiant des recettes lisibles, accessibles et compatibles avec différents modes d'alimentation.
+            </p>
+          </div>
+
+          <div className="rounded-[2rem] bg-slate-100 p-8">
+            <p className="text-sm font-semibold uppercase tracking-wider text-slate-700">Engagements</p>
+            <h2 className="mt-3 text-3xl font-bold">Une promesse de marque claire</h2>
+            <div className="mt-6 space-y-4 text-slate-700">
+              {commitments.map((commitment) => (
+                <div key={commitment} className="rounded-2xl bg-white p-4 shadow-sm">
+                  {commitment}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-emerald-700">Partenaires</p>
+              <h2 className="mt-3 text-3xl font-bold">Un concept adapté aux grandes enseignes fitness</h2>
+              <p className="mt-4 max-w-xl text-slate-600 leading-8">
+                Nutri-Gym peut être déployé dans des salles partenaires comme Fitness Park, au moyen d'un frigo réfrigéré autonome ou d'un corner dédié.
+                Le modèle crée une nouvelle expérience client et ajoute un service concret à forte valeur perçue pour les adhérents.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] bg-white p-8 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-wider text-slate-700">Précommande en ligne</p>
+              <h3 className="mt-3 text-2xl font-bold">Commander à l'avance, récupérer au bon moment</h3>
+              <p className="mt-4 text-slate-600 leading-8">
+                En complément de l'achat sur place, Nutri-Gym permet aux clients de réserver leur plat directement en ligne, avec un créneau horaire programmé.
+                Cela limite les ruptures, améliore l'expérience utilisateur et renforce l'aspect pratique du service.
+              </p>
+              <div className="mt-6 rounded-2xl bg-slate-50 p-5 text-sm text-slate-700">
+                Exemple : je commande mon Muscle-Up pour 19h15 après ma séance, je le récupère directement dans mon club.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-emerald-700">Contact</p>
+              <h2 className="mt-3 text-3xl font-bold">Développons Nutri-Gym ensemble</h2>
+              <p className="mt-4 max-w-xl text-slate-600 leading-8">
+                Tu peux utiliser ce site pour présenter le projet à des partenaires, des investisseurs, une salle de sport ou dans le cadre d'un oral.
+                Il pourra ensuite évoluer vers une vraie plateforme de commande avec paiement en ligne, gestion des stocks et réservation des créneaux.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] bg-slate-50 p-8 shadow-sm">
+              <div className="grid gap-4">
+                <input className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Nom" />
+                <input className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Email" />
+                <input className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Nom de la salle de sport ou de l'entreprise" />
+                <textarea className="min-h-[130px] rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Votre message" />
+                <button className="rounded-2xl bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-emerald-700">
+                  Envoyer la demande
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-slate-200 bg-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <div>
+            <span className="font-semibold text-slate-800">Nutri-Gym</span> — Menus sains, clairs et accessibles pour les sportifs
+          </div>
+          <div>
+            Accueil · Menus · Concept · Partenaires · Précommande · Contact
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
