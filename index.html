@@ -4,569 +4,1052 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nutri-Gym</title>
+  <meta name="description" content="Nutri-Gym propose des repas sains et sportifs directement en salle de sport, avec calories visibles, paiement rapide et réservation à l'avance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --green: #22c55e;
+      --green-dark: #15803d;
+      --green-soft: #dcfce7;
+      --dark: #08120d;
+      --dark-2: #102018;
+      --white: #ffffff;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-900: #0f172a;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1220px;
+    }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f6f8f7;
+      color: var(--slate-900);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #020617 0%, #0f172a 45%, #059669 100%);
-      color: white;
-      padding: 80px 20px 70px;
-    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button, input, textarea, select { font: inherit; }
 
     .container {
-      width: 100%;
-      max-width: 1180px;
+      width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(8,18,13,0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 12px 28px rgba(34,197,94,0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: rgba(255,255,255,0.90);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 10% 18%, rgba(34,197,94,0.18), transparent 24%),
+        radial-gradient(circle at 85% 8%, rgba(134,239,172,0.12), transparent 22%),
+        linear-gradient(145deg, #04100c 0%, #08140f 35%, #0d1813 72%, #08110d 100%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 32px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 34px;
       align-items: center;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 52px;
-      line-height: 1.05;
-      margin: 0 0 20px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #dbeafe;
-      max-width: 650px;
-    }
-
-    .hero-buttons {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn-light {
-      background: white;
-      color: #0f172a;
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,0.25);
-      color: white;
-      background: rgba(255,255,255,0.06);
-    }
-
-    .hero-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .mini-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 22px;
-      padding: 22px;
-      backdrop-filter: blur(6px);
-      min-height: 145px;
-    }
-
-    .mini-card h3 {
-      margin: 8px 0 10px;
-      font-size: 24px;
-    }
-
-    .mini-card p {
-      margin: 0;
-      font-size: 14px;
-      color: #e2e8f0;
-      line-height: 1.6;
-    }
-
-    .section {
-      padding: 70px 20px;
-    }
-
-    .section-title {
-      font-size: 38px;
-      margin: 8px 0 12px;
-    }
-
-    .section-sub {
-      color: #475569;
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 800px;
+      padding: 64px 0 72px;
+      min-height: calc(100vh - 78px);
     }
 
     .eyebrow {
-      color: #059669;
-      font-size: 14px;
-      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.14em;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
     }
 
-    .concept-box {
-      background: white;
-      border-radius: 28px;
-      padding: 34px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+    .hero h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(44px, 7vw, 80px);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      max-width: 800px;
+    }
+
+    .hero p.lead {
+      margin: 0;
+      color: #d4e4da;
+      font-size: 18px;
+      line-height: 1.85;
+      max-width: 690px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 22px;
+      border-radius: 18px;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: white;
+      box-shadow: 0 14px 30px rgba(34,197,94,0.26);
+    }
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-card span {
+      color: #d3e3d9;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+      min-height: 620px;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 620px;
+      object-fit: cover;
+      opacity: 0.92;
+    }
+
+    .overlay-card {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(8,18,13,0.68);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(18px);
+    }
+
+    .overlay-card h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      letter-spacing: -0.04em;
+    }
+
+    .macro-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .macro-pill {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .macro-pill span {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #d3e3d9;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .macro-pill b {
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .section { padding: 96px 0; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 34px;
+      flex-wrap: wrap;
+    }
+
+    .section .eyebrow {
+      background: rgba(34,197,94,0.12);
+      border-color: rgba(34,197,94,0.12);
+      color: var(--green-dark);
+    }
+
+    .section-title {
+      margin: 16px 0 12px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .section-text {
+      max-width: 720px;
+      color: var(--slate-600);
+      font-size: 18px;
       line-height: 1.8;
-      color: #334155;
-      margin-top: 22px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 24px;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15,23,42,0.05);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      font-size: 24px;
+    }
+
+    .feature-card h3 {
+      margin: 16px 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--slate-600);
+      line-height: 1.75;
+      font-size: 15px;
     }
 
     .menu-grid {
-      margin-top: 34px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 22px;
     }
 
     .menu-card {
       background: white;
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e2e8f0;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15,23,42,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-image {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .menu-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
     }
 
     .menu-top {
       display: flex;
       justify-content: space-between;
+      gap: 12px;
       align-items: start;
-      gap: 10px;
     }
 
-    .menu-card h3 {
+    .menu-title {
       margin: 0;
-      font-size: 26px;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .menu-badge {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 10px;
     }
 
     .price {
-      background: #f1f5f9;
+      padding: 10px 14px;
       border-radius: 999px;
-      padding: 8px 12px;
+      background: var(--slate-100);
+      font-weight: 800;
       font-size: 14px;
-      font-weight: bold;
       white-space: nowrap;
     }
 
-    .pill {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #dcfce7;
-      color: #166534;
-      font-size: 12px;
-      font-weight: bold;
+    .menu-body p {
+      margin: 0;
+      color: var(--slate-600);
+      line-height: 1.75;
+      font-size: 15px;
     }
 
-    .menu-card p {
-      color: #475569;
-      line-height: 1.7;
+    .menu-macros {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      padding: 16px;
+      border-radius: 20px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
     }
 
-    .macros {
-      margin-top: 16px;
-      background: #f8fafc;
+    .menu-macros div {
+      background: white;
+      border: 1px solid var(--slate-200);
       border-radius: 16px;
-      padding: 14px;
-      font-weight: bold;
-      color: #0f172a;
-      font-size: 14px;
+      padding: 12px;
     }
 
-    .tags {
-      margin-top: 14px;
+    .menu-macros span {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--slate-500);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .menu-macros b {
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
     .tag {
-      border: 1px solid #cbd5e1;
-      color: #475569;
-      padding: 7px 10px;
+      padding: 8px 10px;
       border-radius: 999px;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      color: var(--slate-600);
       font-size: 12px;
+      font-weight: 700;
     }
 
     .dark-section {
-      background: #020617;
       color: white;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(34,197,94,0.12), transparent 24%),
+        linear-gradient(140deg, #07110d, #08140f 40%, #0c1712 100%);
+    }
+
+    .dark-section .eyebrow {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.08);
+      color: #bbf7d0;
     }
 
     .dark-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 30px;
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .step-box, .benefit-box {
-      background: rgba(255,255,255,0.05);
+    .dark-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      padding: 22px;
-      margin-bottom: 14px;
-      color: #e2e8f0;
-      line-height: 1.7;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
     }
 
-    .highlight-grid {
+    .dark-card p, .dark-card li {
+      color: #d3e3d9;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .steps { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; }
+    .steps li {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .step-num {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      background: linear-gradient(135deg, #bbf7d0, #22c55e);
+      color: #052e16;
+    }
+
+    .booking-payment {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: white;
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15,23,42,0.06);
+    }
+
+    .panel p {
+      color: var(--slate-600);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 28px;
+      gap: 14px;
     }
 
-    .highlight-card {
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-700);
     }
 
-    .green {
-      background: #ecfdf5;
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 16px;
+      border: 1px solid #dbe2ea;
+      background: var(--slate-50);
+      outline: none;
+      transition: 0.2s ease;
     }
 
-    .light {
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.14);
       background: white;
     }
 
-    .highlight-card p {
-      color: #475569;
-      line-height: 1.8;
+    textarea { min-height: 120px; resize: vertical; }
+
+    .payment-options {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
     }
 
-    .contact-box {
-      background: white;
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    .payment-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 14px 16px;
-      margin-bottom: 14px;
-      border-radius: 14px;
-      border: 1px solid #cbd5e1;
-      font-size: 15px;
-      font-family: inherit;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px 18px;
-      border: 0;
-      border-radius: 14px;
-      background: #059669;
-      color: white;
+    .payment-card strong {
+      display: block;
+      margin-bottom: 4px;
       font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
     }
 
-    footer {
-      border-top: 1px solid #e2e8f0;
-      padding: 24px 20px;
-      color: #64748b;
-      text-align: center;
+    .payment-card span {
+      color: var(--slate-600);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .payment-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .footer {
       background: white;
+      border-top: 1px solid var(--slate-200);
+      padding: 28px 0 42px;
     }
 
-    @media (max-width: 980px) {
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--slate-500);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1120px) {
       .hero-grid,
       .dark-grid,
-      .highlight-grid,
-      .menu-grid {
+      .booking-payment {
         grid-template-columns: 1fr;
       }
 
-      .hero-cards {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      h1 {
-        font-size: 40px;
-      }
+      .feature-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .menu-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
 
-    @media (max-width: 640px) {
-      .hero-cards {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 34px;
-      }
-
-      .section-title {
-        font-size: 30px;
-      }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .hero-grid { min-height: auto; padding-top: 40px; }
+      .hero-stats,
+      .feature-grid,
+      .menu-grid,
+      .macro-strip,
+      .form-grid { grid-template-columns: 1fr; }
+      .section { padding: 72px 0; }
+      .panel, .dark-card, .feature-card, .menu-body { padding: 22px; }
+      .hero-card img { height: 420px; }
+      .overlay-card { left: 12px; right: 12px; bottom: 12px; }
+      .menu-title { font-size: 24px; }
     }
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">N</span>
+        <span>Nutri-Gym</span>
+      </a>
+      <div class="nav-links">
+        <a href="#concept">Concept</a>
+        <a href="#menus">Menus</a>
+        <a href="#paiement">Paiement</a>
+        <a href="#reservation">Réservation</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-  <section class="hero">
+  <header class="hero" id="top">
     <div class="container hero-grid">
       <div>
-        <div class="badge">Nutri-Gym • Menus sains en salle de sport</div>
-        <h1>Manger sainement après le sport devient enfin simple, rapide et abordable.</h1>
-        <p>
-          Nutri-Gym propose des repas prêts à emporter, vendus directement dans des distributeurs
-          réfrigérés installés dans les salles de sport. Chaque packaging affiche clairement
-          les protéines, glucides, lipides et calories pour permettre à chacun de suivre ses objectifs.
+        <span class="eyebrow">Healthy meals • Fitness retail • Ready to go</span>
+        <h1>Le repas sportif premium, disponible directement dans votre salle.</h1>
+        <p class="lead">
+          Nutri-Gym propose des plats sains, visuellement attractifs et accessibles, disponibles dans des distributeurs réfrigérés en salle de sport. Chaque packaging affiche clairement les protéines, glucides, lipides et calories. Le client peut acheter immédiatement ou réserver son plat à l’avance.
         </p>
-        <div class="hero-buttons">
-          <a href="#menus" class="btn btn-light">Découvrir les menus</a>
-          <a href="#concept" class="btn btn-outline">Voir le concept</a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menus">Voir les menus</a>
+          <a class="btn btn-secondary" href="#reservation">Réserver un plat</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>5 menus</strong>
+            <span>Une gamme courte, claire et rentable, pensée pour les vrais usages fitness.</span>
+          </div>
+          <div class="stat-card">
+            <strong>~10€</strong>
+            <span>Un prix accessible pour démocratiser l’alimentation saine après l’effort.</span>
+          </div>
+          <div class="stat-card">
+            <strong>100%</strong>
+            <span>Transparence sur les calories et les macronutriments directement sur l’emballage.</span>
+          </div>
         </div>
       </div>
 
-      <div class="hero-cards">
-        <div class="mini-card">
-          <div>🏷️ Positionnement</div>
-          <h3>Healthy & accessible</h3>
-          <p>Des menus autour de 10€ pour démocratiser l’alimentation saine en salle de sport.</p>
-        </div>
-        <div class="mini-card">
-          <div>🔥 Différenciation</div>
-          <h3>Calories visibles</h3>
-          <p>Macronutriments et calories affichés clairement sur chaque emballage.</p>
-        </div>
-        <div class="mini-card">
-          <div>🧊 Distribution</div>
-          <h3>Frigos réfrigérés</h3>
-          <p>Des plats prêts à partir, disponibles directement après l’entraînement.</p>
-        </div>
-        <div class="mini-card">
-          <div>📲 Flexibilité</div>
-          <h3>Précommande en ligne</h3>
-          <p>Le client réserve son plat à l’avance et le récupère à l’heure souhaitée.</p>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80" alt="Repas sportif Nutri-Gym" />
+        <div class="overlay-card">
+          <h3>Muscle-Up</h3>
+          <div class="macro-strip">
+            <div class="macro-pill"><span>Protéines</span><b>45 g</b></div>
+            <div class="macro-pill"><span>Glucides</span><b>50 g</b></div>
+            <div class="macro-pill"><span>Lipides</span><b>12 g</b></div>
+            <div class="macro-pill"><span>Calories</span><b>490 kcal</b></div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
   <section class="section" id="concept">
     <div class="container">
-      <div class="eyebrow">Le concept</div>
-      <h2 class="section-title">Une solution pensée pour la vraie vie des sportifs</h2>
-      <p class="section-sub">
-        Nutri-Gym repose sur une idée simple : proposer peu de plats, mais les bons.
-      </p>
-      <div class="concept-box">
-        La gamme est volontairement courte pour rester lisible, rentable et facile à produire.
-        Chaque menu répond à un besoin précis : repas équilibré, sèche, prise de masse,
-        alternative vegan ou végétarienne. L’objectif est d’offrir une alimentation saine,
-        claire et pratique à toutes les personnes qui fréquentent les salles de sport,
-        qu’elles trackent leurs calories ou qu’elles souhaitent simplement mieux manger.
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Le concept</span>
+          <h2 class="section-title">Peu de plats, mais les bons.</h2>
+        </div>
+        <p class="section-text">
+          Nutri-Gym repose sur une idée simple : proposer une gamme réduite, immédiatement compréhensible, avec des recettes pensées pour la vraie vie des sportifs. Le client doit pouvoir identifier son besoin, voir ses apports et repartir avec un repas cohérent en quelques secondes.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Packaging lisible</h3>
+          <p>Calories et macros visibles immédiatement pour rassurer les personnes qui suivent leurs objectifs nutritionnels.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧊</div>
+          <h3>Distributeurs réfrigérés</h3>
+          <p>Les plats sont disponibles en libre accès dans les salles partenaires, prêts à emporter après l’entraînement.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Production dark kitchen</h3>
+          <p>Un modèle efficace pour standardiser les recettes, optimiser les coûts et déployer le concept à plus grande échelle.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📲</div>
+          <h3>Achat ou réservation</h3>
+          <p>Le client peut payer sur place ou réserver son plat à l’avance avec un créneau de retrait programmé.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="menus">
     <div class="container">
-      <div class="eyebrow">Nos menus</div>
-      <h2 class="section-title">Une gamme courte, claire et efficace</h2>
-      <p class="section-sub">
-        Chaque menu affiche ses macronutriments et ses calories pour un choix rapide, transparent et cohérent.
-      </p>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Nos menus</span>
+          <h2 class="section-title">Une gamme claire, premium et immédiatement vendable.</h2>
+        </div>
+        <p class="section-text">
+          Chaque menu dispose d’une identité visuelle, d’un positionnement précis et d’informations nutritionnelles faciles à lire. Les images ci-dessous peuvent rester telles quelles pour une démo ou être remplacées plus tard par tes propres photos.
+        </p>
+      </div>
 
       <div class="menu-grid">
-        <div class="menu-card">
-          <div class="menu-top">
-            <div>
-              <h3>Muscle-Up</h3>
-              <div class="pill">Plat signature</div>
+        <article class="menu-card">
+          <img class="menu-image" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80" alt="Muscle-Up" />
+          <div class="menu-body">
+            <div class="menu-top">
+              <div>
+                <h3 class="menu-title">Muscle-Up</h3>
+                <div class="menu-badge">Plat signature</div>
+              </div>
+              <div class="price">9,90€</div>
             </div>
-            <div class="price">9,90€</div>
+            <p>Poulet mariné, quinoa, brocolis et sauce cajou. Un menu équilibré, premium et facile à identifier comme best-seller.</p>
+            <div class="menu-macros">
+              <div><span>Protéines</span><b>45 g</b></div>
+              <div><span>Glucides</span><b>50 g</b></div>
+              <div><span>Lipides</span><b>12 g</b></div>
+              <div><span>Calories</span><b>490 kcal</b></div>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Halal possible</span>
+              <span class="tag">Équilibré</span>
+              <span class="tag">Best-seller</span>
+            </div>
           </div>
-          <p>Poulet mariné, quinoa, brocolis et sauce cajou. Le repas iconique de Nutri-Gym.</p>
-          <div class="macros">45g protéines • 50g glucides • 12g lipides • 490 kcal</div>
-          <div class="tags">
-            <span class="tag">Halal possible</span>
-            <span class="tag">Riche en protéines</span>
-            <span class="tag">Prêt à emporter</span>
-          </div>
-        </div>
+        </article>
 
-        <div class="menu-card">
-          <div class="menu-top">
-            <div>
-              <h3>Bulk-Up</h3>
-              <div class="pill">Prise de masse</div>
+        <article class="menu-card">
+          <img class="menu-image" src="https://images.unsplash.com/photo-1604908554007-8f6a0f74f8a2?auto=format&fit=crop&w=1200&q=80" alt="Bulk-Up" />
+          <div class="menu-body">
+            <div class="menu-top">
+              <div>
+                <h3 class="menu-title">Bulk-Up</h3>
+                <div class="menu-badge">Prise de masse</div>
+              </div>
+              <div class="price">10,90€</div>
             </div>
-            <div class="price">10,90€</div>
+            <p>Une recette plus généreuse, conçue pour accompagner les entraînements intenses et soutenir la récupération musculaire.</p>
+            <div class="menu-macros">
+              <div><span>Protéines</span><b>50 g</b></div>
+              <div><span>Glucides</span><b>80 g</b></div>
+              <div><span>Lipides</span><b>20 g</b></div>
+              <div><span>Calories</span><b>720 kcal</b></div>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Halal possible</span>
+              <span class="tag">Musculation</span>
+              <span class="tag">Énergie élevée</span>
+            </div>
           </div>
-          <p>Une recette plus généreuse pour accompagner les entraînements intensifs.</p>
-          <div class="macros">50g protéines • 80g glucides • 20g lipides • 720 kcal</div>
-          <div class="tags">
-            <span class="tag">Halal possible</span>
-            <span class="tag">Calories élevées</span>
-            <span class="tag">Post-training</span>
-          </div>
-        </div>
+        </article>
 
-        <div class="menu-card">
-          <div class="menu-top">
-            <div>
-              <h3>Lean Fit</h3>
-              <div class="pill">Sèche</div>
+        <article class="menu-card">
+          <img class="menu-image" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80" alt="Lean Fit" />
+          <div class="menu-body">
+            <div class="menu-top">
+              <div>
+                <h3 class="menu-title">Lean Fit</h3>
+                <div class="menu-badge">Sèche</div>
+              </div>
+              <div class="price">9,90€</div>
             </div>
-            <div class="price">9,90€</div>
+            <p>Un menu plus léger, riche en protéines et maîtrisé en calories pour les personnes qui veulent affiner leur alimentation.</p>
+            <div class="menu-macros">
+              <div><span>Protéines</span><b>40 g</b></div>
+              <div><span>Glucides</span><b>25 g</b></div>
+              <div><span>Lipides</span><b>8 g</b></div>
+              <div><span>Calories</span><b>380 kcal</b></div>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Low calorie</span>
+              <span class="tag">High protein</span>
+              <span class="tag">Définition</span>
+            </div>
           </div>
-          <p>Un menu léger, riche en protéines et maîtrisé en calories.</p>
-          <div class="macros">40g protéines • 25g glucides • 8g lipides • 380 kcal</div>
-          <div class="tags">
-            <span class="tag">Faible en calories</span>
-            <span class="tag">Riche en protéines</span>
-            <span class="tag">Simple et sain</span>
-          </div>
-        </div>
+        </article>
 
-        <div class="menu-card">
-          <div class="menu-top">
-            <div>
-              <h3>Green Power</h3>
-              <div class="pill">Vegan</div>
+        <article class="menu-card">
+          <img class="menu-image" src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1200&q=80" alt="Green Power" />
+          <div class="menu-body">
+            <div class="menu-top">
+              <div>
+                <h3 class="menu-title">Green Power</h3>
+                <div class="menu-badge">Vegan</div>
+              </div>
+              <div class="price">9,90€</div>
             </div>
-            <div class="price">9,90€</div>
+            <p>Une alternative végétale complète et nourrissante, pensée pour allier praticité, goût et apport nutritionnel.</p>
+            <div class="menu-macros">
+              <div><span>Protéines</span><b>30 g</b></div>
+              <div><span>Glucides</span><b>55 g</b></div>
+              <div><span>Lipides</span><b>15 g</b></div>
+              <div><span>Calories</span><b>500 kcal</b></div>
+            </div>
+            <div class="tag-row">
+              <span class="tag">100% vegan</span>
+              <span class="tag">Riche en fibres</span>
+              <span class="tag">Healthy</span>
+            </div>
           </div>
-          <p>Une alternative végétale complète, pensée pour être équilibrée et nourrissante.</p>
-          <div class="macros">30g protéines • 55g glucides • 15g lipides • 500 kcal</div>
-          <div class="tags">
-            <span class="tag">100% vegan</span>
-            <span class="tag">Riche en fibres</span>
-            <span class="tag">Équilibré</span>
-          </div>
-        </div>
+        </article>
 
-        <div class="menu-card">
-          <div class="menu-top">
-            <div>
-              <h3>Veggie Boost</h3>
-              <div class="pill">Végétarien</div>
+        <article class="menu-card">
+          <img class="menu-image" src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&w=1200&q=80" alt="Veggie Boost" />
+          <div class="menu-body">
+            <div class="menu-top">
+              <div>
+                <h3 class="menu-title">Veggie Boost</h3>
+                <div class="menu-badge">Végétarien</div>
+              </div>
+              <div class="price">9,90€</div>
             </div>
-            <div class="price">9,90€</div>
+            <p>Une option végétarienne rassasiante, claire et premium pour élargir la cible sans complexifier l’offre.</p>
+            <div class="menu-macros">
+              <div><span>Protéines</span><b>35 g</b></div>
+              <div><span>Glucides</span><b>50 g</b></div>
+              <div><span>Lipides</span><b>18 g</b></div>
+              <div><span>Calories</span><b>550 kcal</b></div>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Végétarien</span>
+              <span class="tag">Repas complet</span>
+              <span class="tag">Accessible</span>
+            </div>
           </div>
-          <p>Une option savoureuse et rassasiante pour un repas végétarien complet.</p>
-          <div class="macros">35g protéines • 50g glucides • 18g lipides • 550 kcal</div>
-          <div class="tags">
-            <span class="tag">Végétarien</span>
-            <span class="tag">Repas complet</span>
-            <span class="tag">Format pratique</span>
-          </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="section dark-section">
-    <div class="container">
-      <div class="eyebrow" style="color:#34d399;">Fonctionnement</div>
-      <h2 class="section-title" style="color:white;">Du laboratoire de cuisine à la salle de sport</h2>
+    <div class="container dark-grid">
+      <div class="dark-card">
+        <span class="eyebrow">Fonctionnement</span>
+        <h2 class="section-title" style="color:white; max-width:560px;">De la dark kitchen à la récupération du plat en salle.</h2>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div><strong>Production centralisée</strong><br><span>Les plats sont préparés dans des dark kitchens pour garantir une fabrication efficace, fraîche et standardisée.</span></div></li>
+          <li><div class="step-num">2</div><div><strong>Livraison quotidienne</strong><br><span>Les menus sont livrés dans les clubs partenaires et stockés dans des distributeurs ou frigos réfrigérés.</span></div></li>
+          <li><div class="step-num">3</div><div><strong>Vente immédiate ou réservation</strong><br><span>Le client achète directement après sa séance ou réserve à l’avance pour un retrait programmé.</span></div></li>
+        </ul>
+      </div>
 
-      <div class="dark-grid">
-        <div>
-          <div class="step-box">1. Les plats sont préparés dans des dark kitchens pour garantir une production efficace, standardisée et fraîche.</div>
-          <div class="step-box">2. Ils sont livrés dans des salles partenaires puis placés dans des distributeurs réfrigérés en libre accès.</div>
-          <div class="step-box">3. Le client choisit son menu, consulte les calories et macronutriments, puis paie sur place ou commande à l’avance en ligne.</div>
-        </div>
-        <div>
-          <div class="benefit-box">Affichage clair des protéines, glucides, lipides et calories sur chaque packaging.</div>
-          <div class="benefit-box">Peu de plats, mais une gamme couvrant les besoins essentiels : vegan, végétarien, sèche, prise de masse et menu signature.</div>
-          <div class="benefit-box">Prix accessible autour de 10€ pour démocratiser l’alimentation saine en salle de sport.</div>
-          <div class="benefit-box">Concept pensé pour les personnes qui suivent leurs calories comme pour celles qui veulent simplement mieux manger.</div>
+      <div class="dark-card" id="paiement">
+        <span class="eyebrow">Paiement</span>
+        <h2 class="section-title" style="color:white; max-width:560px;">Des options simples pour payer rapidement.</h2>
+        <p>Le site peut afficher plusieurs moyens de paiement pour rassurer l’utilisateur et donner une vraie impression de projet abouti. Pour une mise en ligne réelle, ces options pourront ensuite être reliées à Stripe ou à un autre prestataire.</p>
+        <div class="payment-options">
+          <div class="payment-card">
+            <div>
+              <strong>Carte bancaire</strong>
+              <span>Paiement rapide à la borne ou en ligne au moment de la réservation.</span>
+            </div>
+            <div class="payment-badge">Visa / Mastercard</div>
+          </div>
+          <div class="payment-card">
+            <div>
+              <strong>Apple Pay / Google Pay</strong>
+              <span>Idéal pour un achat immédiat en sortie de séance, sans friction.</span>
+            </div>
+            <div class="payment-badge">Mobile</div>
+          </div>
+          <div class="payment-card">
+            <div>
+              <strong>Abonnement ou crédit prépayé</strong>
+              <span>Option intéressante pour les adhérents réguliers qui veulent gagner du temps.</span>
+            </div>
+            <div class="payment-badge">Fidélité</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="highlight-grid">
-        <div class="highlight-card green">
-          <div class="eyebrow">Inclusivité alimentaire</div>
-          <h2 class="section-title" style="font-size:30px;">Une offre pensée pour toucher un large public</h2>
-          <p>
-            Nutri-Gym intègre des alternatives vegan et végétariennes, ainsi qu’une possibilité
-            de viande halal sur les recettes concernées. Le concept vise une alimentation claire,
-            accessible et compatible avec différents modes de consommation.
-          </p>
-        </div>
-
-        <div class="highlight-card light">
-          <div class="eyebrow" style="color:#334155;">Précommande</div>
-          <h2 class="section-title" style="font-size:30px;">Commander à l’avance, récupérer au bon moment</h2>
-          <p>
-            En complément de l’achat sur place, le client peut réserver son plat en ligne
-            avec une heure programmée. Exemple : je commande mon Muscle-Up pour 19h15,
-            puis je le récupère directement dans mon club après la séance.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background:#f1f5f9;">
-    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
-      <div>
-        <div class="eyebrow">Partenaires</div>
-        <h2 class="section-title">Un concept adapté aux grandes enseignes fitness</h2>
-        <p class="section-sub">
-          Nutri-Gym peut être déployé dans des salles partenaires comme Fitness Park via un frigo autonome
-          ou un corner dédié. Le modèle crée une nouvelle expérience client et ajoute un vrai service utile.
+  <section class="section" id="reservation">
+    <div class="container booking-payment">
+      <div class="panel">
+        <span class="eyebrow">Réservation à l’avance</span>
+        <h2 class="section-title" style="font-size:42px;">Réserver son plat avant la séance ou pour l’après-training.</h2>
+        <p>
+          Cette section donne immédiatement une dimension plus professionnelle au site. Le client choisit son club, son menu, son heure de retrait et son mode de paiement. Même si le formulaire n’est pas encore relié à une vraie base de données, il structure déjà parfaitement l’expérience utilisateur.
         </p>
+        <form>
+          <div class="form-grid">
+            <div>
+              <label>Nom</label>
+              <input type="text" placeholder="Votre nom" />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type="email" placeholder="Votre email" />
+            </div>
+            <div>
+              <label>Salle partenaire</label>
+              <select>
+                <option>Fitness Park Tremblay</option>
+                <option>Fitness Park Roissy</option>
+                <option>Fitness Park Villepinte</option>
+              </select>
+            </div>
+            <div>
+              <label>Plat</label>
+              <select>
+                <option>Muscle-Up</option>
+                <option>Bulk-Up</option>
+                <option>Lean Fit</option>
+                <option>Green Power</option>
+                <option>Veggie Boost</option>
+              </select>
+            </div>
+            <div>
+              <label>Date</label>
+              <input type="date" />
+            </div>
+            <div>
+              <label>Heure de retrait</label>
+              <input type="time" />
+            </div>
+            <div>
+              <label>Mode de paiement</label>
+              <select>
+                <option>Carte bancaire</option>
+                <option>Apple Pay</option>
+                <option>Google Pay</option>
+                <option>Crédit prépayé</option>
+              </select>
+            </div>
+            <div>
+              <label>Quantité</label>
+              <select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:14px;">
+            <label>Commentaire</label>
+            <textarea placeholder="Précisions éventuelles"></textarea>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:18px;">
+            <a class="btn btn-primary" href="#">Confirmer la réservation</a>
+            <a class="btn" href="#" style="background: var(--slate-100); color: var(--slate-900);">Voir le récapitulatif</a>
+          </div>
+        </form>
       </div>
 
-      <div class="contact-box">
-        <div class="eyebrow" style="color:#334155;">Contact</div>
-        <h2 class="section-title" style="font-size:30px;">Développons Nutri-Gym ensemble</h2>
-        <input placeholder="Nom" />
-        <input placeholder="Email" />
-        <input placeholder="Salle de sport ou entreprise" />
-        <textarea rows="5" placeholder="Votre message"></textarea>
-        <button>Envoyer la demande</button>
+      <div class="panel" id="contact">
+        <span class="eyebrow">Contact partenaire</span>
+        <h2 class="section-title" style="font-size:42px;">Déployer Nutri-Gym dans une salle.</h2>
+        <p>Cette section peut servir à contacter une enseigne partenaire, un investisseur ou un exploitant de salle souhaitant installer un distributeur réfrigéré Nutri-Gym.</p>
+        <div class="form-grid">
+          <div>
+            <label>Nom</label>
+            <input type="text" placeholder="Nom" />
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" placeholder="Email" />
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label>Entreprise / Salle</label>
+            <input type="text" placeholder="Nom de la structure" />
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label>Message</label>
+            <textarea placeholder="Votre demande"></textarea>
+          </div>
+        </div>
+        <div style="margin-top:18px;">
+          <a class="btn btn-primary" href="#">Envoyer la demande</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <strong style="color:#0f172a;">Nutri-Gym</strong> — Menus sains, clairs et accessibles pour les sportifs
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong style="color: var(--slate-900);">Nutri-Gym</strong> — Menus sains, clairs et accessibles pour les sportifs</div>
+      <div class="footer-links">
+        <a href="#concept">Concept</a>
+        <a href="#menus">Menus</a>
+        <a href="#paiement">Paiement</a>
+        <a href="#reservation">Réservation</a>
+      </div>
+    </div>
   </footer>
-
 </body>
 </html>
